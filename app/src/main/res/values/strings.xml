@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HostSelector</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="detect_url">开始检测</string>
+</resources>
