@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.detect_btn).setOnClickListener(v -> {
+            // 1. TODO 判断网络状态，若无网络，默认选择第一个 host
             new Thread(() -> {
                 // urls 转化为 hosts，并过滤格式不合法的 url
                 final List<Host> hosts = Arrays.stream(urls).map(url -> {
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
                     if (bestHost != null) {
                         textView.setText("最优的 Host：\n" + bestHost.url);
                     } else {
-                        textView.setText("未找到合适的 Host");
+                        Host defaultHost = hosts.get(0);
+                        textView.setText("未找到合适的 Host， 默认选择第一个：" + defaultHost.url);
                     }
                 });
             }).start();
